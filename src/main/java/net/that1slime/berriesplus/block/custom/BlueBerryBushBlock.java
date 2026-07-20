@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.that1slime.berriesplus.item.ModItems;
 
 public class BlueBerryBushBlock extends SweetBerryBushBlock {
     public BlueBerryBushBlock(Properties properties) {
@@ -21,7 +22,7 @@ public class BlueBerryBushBlock extends SweetBerryBushBlock {
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        return
+        return new ItemStack(ModItems.BLUE_BERRIES.get());
     }
 
     @Override
@@ -30,7 +31,7 @@ public class BlueBerryBushBlock extends SweetBerryBushBlock {
         boolean flag = i == 3;
         if (i > 1) {
             int j = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack(, j + (flag ? 1 : 0)));
+            popResource(level, pos, new ItemStack(ModItems.BLUE_BERRIES.get(), j + (flag ? 1 : 0)));
             level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = (BlockState)state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);

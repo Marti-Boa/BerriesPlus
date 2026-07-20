@@ -1,6 +1,7 @@
 package net.that1slime.berriesplus;
 
 import net.that1slime.berriesplus.block.ModBlocks;
+import net.that1slime.berriesplus.item.ModCreativeModeTabs;
 import net.that1slime.berriesplus.item.ModItems;
 import org.slf4j.Logger;
 
@@ -50,6 +51,7 @@ public class BerriesPlus {
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+        ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
