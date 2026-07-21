@@ -2,5 +2,12 @@
   "item.berriesplus.blue_berries": "Blueberries",
   "item.berriesplus.yellow_berries": "Yellow Berries",
 
-  "creativetab.berriesplus.berriesplus_tab": "BerriesPlus"
+  "creativetab.berriesplus.berriesplus_tab": "BerriesPlus",
+
+
+  "block.berriesplus.yellow_berry_bush": "Yellow Berry Bush",
+  "block.berriesplus.blue_berry_bush": "Blue Berry Bush",
+
+  "death.attack.yellow_berry_bush": "%1$s was poked to death by a Yellow Berry Bush"
+
 }

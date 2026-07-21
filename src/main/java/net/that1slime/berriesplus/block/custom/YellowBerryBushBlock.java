@@ -1,5 +1,7 @@
 package net.that1slime.berriesplus.block.custom;
 
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,6 +16,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.that1slime.berriesplus.item.ModItems;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.that1slime.berriesplus.damage.ModDamageTypes;
 
 public class YellowBerryBushBlock extends SweetBerryBushBlock {
     public YellowBerryBushBlock(Properties properties) {
@@ -22,7 +29,28 @@ public class YellowBerryBushBlock extends SweetBerryBushBlock {
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        return new ItemStack(ModItems.BLUE_BERRIES.get());
+        return new ItemStack(ModItems.YELLOW_BERRIES.get());
+    }
+
+    @Override
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+            entity.makeStuckInBlock(state, new Vec3(0.8F, 0.75, 0.8F));
+            if (!level.isClientSide && state.getValue(AGE) > 0 && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
+                double d0 = Math.abs(entity.getX() - entity.xOld);
+                double d1 = Math.abs(entity.getZ() - entity.zOld);
+                if (d0 >= 0.003F || d1 >= 0.003F) {
+                    entity.hurt(
+                            new DamageSource(
+                                    level.registryAccess()
+                                            .registryOrThrow(Registries.DAMAGE_TYPE)
+                                            .getHolderOrThrow(ModDamageTypes.YELLOW_BERRY_BUSH)
+                            ),
+                            1.0F
+                    );
+                }
+            }
+        }
     }
 
     @Override
