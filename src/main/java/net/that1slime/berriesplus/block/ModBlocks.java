@@ -10,6 +10,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.that1slime.berriesplus.BerriesPlus;
 import net.that1slime.berriesplus.block.custom.BlueBerryBushBlock;
+import net.that1slime.berriesplus.block.custom.YellowBerryBushBlock;
 import net.that1slime.berriesplus.item.ModItems;
 
 import java.util.function.Supplier;
@@ -20,6 +21,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> BLUE_BERRY_BUSH = BLOCKS.register("blue_berry_bush",
             () -> new BlueBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> YELLOW_BERRY_BUSH = BLOCKS.register("yellow_berry_bush",
+            () -> new YellowBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
 
 

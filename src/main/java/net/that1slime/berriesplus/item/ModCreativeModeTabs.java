@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.berriesplus.berriesplus_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.BLUE_BERRIES );
+                        output.accept(ModItems.YELLOW_BERRIES );
 
                     }).build());
 

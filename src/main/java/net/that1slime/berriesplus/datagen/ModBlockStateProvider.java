@@ -3,6 +3,7 @@ package net.that1slime.berriesplus.datagen;
 import net.that1slime.berriesplus.BerriesPlus;
 import net.that1slime.berriesplus.block.ModBlocks;
 import net.that1slime.berriesplus.block.custom.BlueBerryBushBlock;
+import net.that1slime.berriesplus.block.custom.YellowBerryBushBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
@@ -26,21 +27,29 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 "blue_berry_bush_stage",
                 "blue_berry_bush_stage"
         );
+
+        makeBush(
+                (SweetBerryBushBlock) ModBlocks.YELLOW_BERRY_BUSH.get(),
+                "yellow_berry_bush_stage",
+                "yellow_berry_bush_stage"
+        );
     }
 
     public void makeBush(SweetBerryBushBlock block, String modelName, String textureName) {
-        Function<BlockState, ConfiguredModel[]> function = state -> states(state, modelName, textureName);
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, block, modelName, textureName);
         getVariantBuilder(block).forAllStates(function);
     }
 
-    private ConfiguredModel[] states(BlockState state, String modelName, String textureName) {
+    private ConfiguredModel[] states(BlockState state, SweetBerryBushBlock block, String modelName, String textureName) {
+        int age = state.getValue(SweetBerryBushBlock.AGE);
+
         return new ConfiguredModel[]{
                 new ConfiguredModel(
                         models().cross(
-                                modelName + state.getValue(BlueBerryBushBlock.AGE),
+                                modelName + age,
                                 ResourceLocation.fromNamespaceAndPath(
                                         BerriesPlus.MOD_ID,
-                                        "block/" + textureName + state.getValue(BlueBerryBushBlock.AGE)
+                                        "block/" + textureName + age
                                 )
                         ).renderType("cutout")
                 )

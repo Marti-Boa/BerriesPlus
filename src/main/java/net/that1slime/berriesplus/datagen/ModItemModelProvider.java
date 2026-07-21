@@ -15,5 +15,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.BLUE_BERRIES.get());
+        basicItem(ModItems.YELLOW_BERRIES.get());
     }
 }

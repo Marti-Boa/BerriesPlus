@@ -14,12 +14,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.that1slime.berriesplus.item.ModItems;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
 
-public class BlueBerryBushBlock extends SweetBerryBushBlock {
-    public BlueBerryBushBlock(Properties properties) {
+public class YellowBerryBushBlock extends SweetBerryBushBlock {
+    public YellowBerryBushBlock(Properties properties) {
         super(properties);
     }
 
@@ -29,21 +26,12 @@ public class BlueBerryBushBlock extends SweetBerryBushBlock {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity) {
-            // Keep the slowing effect, but don't deal damage.
-            entity.makeStuckInBlock(state, new Vec3(0.8D, 0.75D, 0.8D));
-        }
-    }
-
-
-    @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         int i = (Integer)state.getValue(AGE);
         boolean flag = i == 3;
         if (i > 1) {
             int j = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack(ModItems.BLUE_BERRIES.get(), j + (flag ? 1 : 0)));
+            popResource(level, pos, new ItemStack(ModItems.YELLOW_BERRIES.get(), j + (flag ? 1 : 0)));
             level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = (BlockState)state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);
