@@ -1,0 +1,10 @@
+{
+  "values": {
+    "berriesplus:blue_berries": {
+      "chance": 0.3
+    },
+    "berriesplus:yellow_berries": {
+      "chance": 0.3
+    }
+  }
+}
