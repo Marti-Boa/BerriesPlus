@@ -1,5 +1,6 @@
 package net.that1slime.berriesplus.datagen;
 
+import net.minecraft.world.item.Items;
 import net.that1slime.berriesplus.BerriesPlus;
 import net.that1slime.berriesplus.block.ModBlocks;
 import net.that1slime.berriesplus.item.ModItems;
@@ -14,6 +15,8 @@ import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static net.minecraft.data.models.model.TextureMapping.pattern;
+
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -21,6 +24,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.YELLOW_BERRY_PIE.get())
+                .pattern("BBB")
+                .pattern("WWW")
+                .pattern("SES")
+                .define('B', ModItems.YELLOW_BERRIES.get())
+                .define('W', Items.WHEAT)
+                .define('E', Items.EGG)
+                .define('S', Items.SUGAR)
+                .unlockedBy("has_yellow_berries", has(ModItems.YELLOW_BERRIES.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.BLUE_BERRY_PIE.get())
+                .pattern("BBB")
+                .pattern("WWW")
+                .pattern("SES")
+                .define('B', ModItems.BLUE_BERRIES.get())
+                .define('W', Items.WHEAT)
+                .define('E', Items.EGG)
+                .define('S', Items.SUGAR)
+                .unlockedBy("has_blue_berries", has(ModItems.BLUE_BERRIES.get()))
+                .save(recipeOutput);
+
 
     }
 

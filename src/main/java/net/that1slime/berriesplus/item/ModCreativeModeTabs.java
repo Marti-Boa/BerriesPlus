@@ -20,6 +20,8 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.BLUE_BERRIES );
                         output.accept(ModItems.YELLOW_BERRIES );
+                        output.accept(ModItems.YELLOW_BERRY_PIE );
+                        output.accept(ModItems.BLUE_BERRY_PIE );
 
                     }).build());
 

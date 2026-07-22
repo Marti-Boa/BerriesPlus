@@ -14,8 +14,16 @@ public class ModItems {
 public static final DeferredItem<Item> BLUE_BERRIES = ITEMS.register("blue_berries",
         () -> new ItemNameBlockItem(ModBlocks.BLUE_BERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.BLUE_BERRY)));
 
-    public static final DeferredItem<Item> YELLOW_BERRIES = ITEMS.register("yellow_berries",
-            () -> new ItemNameBlockItem(ModBlocks.YELLOW_BERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.YELLOW_BERRY)));
+public static final DeferredItem<Item> YELLOW_BERRIES = ITEMS.register("yellow_berries",
+        () -> new ItemNameBlockItem(ModBlocks.YELLOW_BERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.YELLOW_BERRY)));
+
+    public static final DeferredItem<Item> YELLOW_BERRY_PIE = ITEMS.register("yellow_berry_pie",
+            () -> new Item(new Item.Properties()
+                    .food(ModFoodProperties.YELLOW_BERRY_PIE)));
+
+    public static final DeferredItem<Item> BLUE_BERRY_PIE = ITEMS.register("blue_berry_pie",
+            () -> new Item(new Item.Properties()
+                    .food(ModFoodProperties.BLUE_BERRY_PIE)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

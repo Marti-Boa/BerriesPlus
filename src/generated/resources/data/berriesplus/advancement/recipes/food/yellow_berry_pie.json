@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "berriesplus:yellow_berry_pie"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_berries": {
+      "conditions": {
+        "items": [
+          {
+            "items": "berriesplus:yellow_berries"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yellow_berries"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "berriesplus:yellow_berry_pie"
+    ]
+  }
+}
